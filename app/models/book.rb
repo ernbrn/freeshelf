@@ -9,8 +9,12 @@ class Book < ActiveRecord::Base
   mount_uploader :document, DocumentUploader
 
   extend FriendlyId
-  friendly_id :slug_candidates, :use => :slugged
+  friendly_id :slug_candidates, :use => [:slugged, :history]
   validates_presence_of :title, :slug
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed?
+  end
 
   def slug_candidates
     [:title, [:title, :author]]

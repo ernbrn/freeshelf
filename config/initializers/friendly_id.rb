@@ -70,9 +70,7 @@ FriendlyId.defaults do |config|
   # more like 4.0.
   #
   # config.use Module.new {
-  #   def should_generate_new_friendly_id?
-  #     slug.blank? || title_changed?
-  #   end
+
   # }
   #
   # FriendlyId uses Rails's `parameterize` method to generate slugs, but for
